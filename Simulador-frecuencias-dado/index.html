@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de tiros de un dado</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Simulador de frecuencias de un dado</h1>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="tarjeta">
+            <h2>Entrada de datos</h2>
+
+            <p>
+                Escribe la cantidad de tiradas que deseas realizar.
+                El valor por omisión es de 2000 tiradas.
+            </p>
+
+            <label for="cantidad">Número de tiradas:</label>
+            <input type="number" id="cantidad" value="2000" min="1">
+
+            <button type="button" id="btnSimular">Simular tiradas</button>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Resultados</h2>
+
+            <p>
+                Los resultados también se muestran en la consola del navegador.
+                Para verla presiona <strong>Ctrl + Shift + I</strong> y abre la pestaña
+                <strong>Console</strong>.
+   
+         </p>
+
+            <div id="resultado" class="resultado">
+                Presiona el botón para iniciar la simulación.
+            </div>
+        </section>
+
+    </main>
+
+    
+
+</body>
+</html>

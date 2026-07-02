@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Cálculo Técnicas</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Cargamos math.js para cálculos simbólicos y complejos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.6.0/math.min.js"></script>
+    <!-- Cargamos Chart.js para generar gráficas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Herramientas de Cálculo Técnicas</h1>
+        <nav>
+            <ul>
+                <li><a href="#resistencias">Resistencias</a></li>
+                <li><a href="#vlsm">VLSM</a></li>
+                <li><a href="#bode">Bode</a></li>
+                <li><a href="#lgr">LGR</a></li>
+                <li><a href="#historial">Historial</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de calculadora de resistencias -->
+        <section id="resistencias">
+            <h2>Calculadora de Resistencias</h2>
+            <div class="form-group">
+                <label for="numBands">Cantidad de bandas:</label>
+                <select id="numBands">
+                    <option value="4">4 bandas</option>
+                    <option value="5">5 bandas</option>
+                    <option value="6">6 bandas</option>
+                </select>
+            </div>
+            <div id="bandsContainer"></div>
+            <div class="button-group">
+                <button id="calcRes">Calcular</button>
+                <button id="clearRes">Limpiar</button>
+            </div>
+            <div id="resResult" class="result"></div>
+        </section>
+
+        <!-- Sección de calculadora VLSM -->
+        <section id="vlsm">
+            <h2>Calculadora de Subredes VLSM</h2>
+            <div class="form-group">
+                <label for="baseIp">IP de red base:</label>
+                <input type="text" id="baseIp" placeholder="Ej. 192.168.1.0">
+            </div>
+            <div class="form-group">
+                <label for="basePrefix">Prefijo de red base:</label>
+                <input type="number" id="basePrefix" min="0" max="30" value="24">
+            </div>
+            <div class="form-group">
+                <label for="hostsList">Número de hosts por subred (separados por coma):</label>
+                <input type="text" id="hostsList" placeholder="Ej. 50,20,10">
+            </div>
+            <div class="button-group">
+                <button id="calcVLSM">Calcular VLSM</button>
+            </div>
+            <div id="vlsmResult" class="result"></div>
+        </section>
+
+        <!-- Sección de gráfica Bode -->
+        <section id="bode">
+            <h2>Gráfica Bode</h2>
+            <div class="form-group">
+                <label for="bodeExpr">Ingresa H(s) (usa s para la variable compleja):</label>
+                <input type="text" id="bodeExpr" placeholder="Ej. (s+1)/(s^2 + 3*s + 2)">
+            </div>
+            <div class="form-group">
+                <label for="freqMin">Frecuencia mínima (Hz):</label>
+                <input type="number" id="freqMin" value="1" min="0.0001">
+            </div>
+            <div class="form-group">
+                <label for="freqMax">Frecuencia máxima (Hz):</label>
+                <input type="number" id="freqMax" value="100000" min="0.001">
+            </div>
+            <div class="form-group">
+                <label for="numPoints">Número de puntos:</label>
+                <input type="number" id="numPoints" value="200" min="10" max="1000">
+            </div>
+            <div class="button-group">
+                <button id="calcBode">Calcular Bode</button>
+            </div>
+            <div class="charts">
+                <canvas id="bodeMagChart" height="300"></canvas>
+                <canvas id="bodePhaseChart" height="300"></canvas>
+            </div>
+        </section>
+
+        <!-- Sección de gráfica LGR -->
+        <section id="lgr">
+            <h2>Gráfica LGR</h2>
+            <div class="form-group">
+                <label for="lgrExpr">Ingresa G(s) (forma numerador/denominador):</label>
+                <input type="text" id="lgrExpr" placeholder="Ej. (s+1)/(s^2 + 3*s + 2)">
+            </div>
+            <div class="form-group">
+                <label for="kMax">K máximo:</label>
+                <input type="number" id="kMax" value="20" min="1">
+            </div>
+            <div class="form-group">
+                <label for="kSteps">Número de pasos de K:</label>
+                <input type="number" id="kSteps" value="40" min="1" max="200">
+            </div>
+            <div class="button-group">
+                <button id="calcLGR">Calcular LGR</button>
+            </div>
+            <div class="charts">
+                <canvas id="lgrChart" height="400"></canvas>
+            </div>
+        </section>
+
+        <!-- Sección de historial -->
+        <section id="historial">
+            <h2>Historial de cálculos</h2>
+            <div id="historyList" class="history"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
